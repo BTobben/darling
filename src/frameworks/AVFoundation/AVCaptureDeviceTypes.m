@@ -19,4 +19,3 @@ NSString * const AVCaptureDeviceTypeExternalUnknown = @"AVCaptureDeviceTypeExter
 
 __attribute__((visibility("default"), used))
 NSString * const AVCaptureDeviceTypeMicrophone = @"AVCaptureDeviceTypeMicrophone";
-

@@ -19,4 +19,3 @@
 
 @implementation AVCapturePhotoSettings
 @end
-

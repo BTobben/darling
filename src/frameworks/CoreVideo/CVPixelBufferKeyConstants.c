@@ -47,4 +47,3 @@ const CFStringRef kCVImageBufferYCbCrMatrix_ITU_R_2020 = CFSTR("kCVImageBufferYC
 
 __attribute__((visibility("default"), used))
 const CFStringRef kCVPixelBufferPoolAllocationThresholdKey = CFSTR("kCVPixelBufferPoolAllocationThresholdKey");
-

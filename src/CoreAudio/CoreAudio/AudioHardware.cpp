@@ -71,7 +71,7 @@ Boolean AudioObjectHasProperty(AudioObjectID inObjectID,
 	AudioHardwareImpl* obj = GetObject(inObjectID);
 	if (!obj)
 		return 0;
-	
+
 	return obj->hasProperty(inAddress);
 }
 
@@ -81,7 +81,7 @@ OSStatus AudioObjectIsPropertySettable(AudioObjectID inObjectID,
 	AudioHardwareImpl* obj = GetObject(inObjectID);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->isPropertySettable(inAddress, outIsSettable);
 }
 
@@ -92,7 +92,7 @@ OSStatus AudioObjectGetPropertyDataSize(AudioObjectID inObjectID,
 	AudioHardwareImpl* obj = GetObject(inObjectID);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->getPropertyDataSize(inAddress, inQualifierDataSize,
 			inQualifierData, outDataSize);
 }
@@ -104,7 +104,7 @@ OSStatus AudioObjectGetPropertyData(AudioObjectID inObjectID,
 	AudioHardwareImpl* obj = GetObject(inObjectID);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->getPropertyData(inAddress, inQualifierDataSize, inQualifierData,
 			ioDataSize, outData);
 }
@@ -116,7 +116,7 @@ OSStatus AudioObjectSetPropertyData(AudioObjectID inObjectID,
 	AudioHardwareImpl* obj = GetObject(inObjectID);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->setPropertyData(inAddress, inQualifierDataSize, inQualifierData,
 			inDataSize, inData);
 }
@@ -128,7 +128,7 @@ OSStatus AudioObjectAddPropertyListener(AudioObjectID inObjectID,
 	AudioHardwareImpl* obj = GetObject(inObjectID);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->addPropertyListener(inAddress, inListener, inClientData);
 }
 
@@ -139,7 +139,7 @@ OSStatus AudioObjectRemovePropertyListener(AudioObjectID inObjectID,
 	AudioHardwareImpl* obj = GetObject(inObjectID);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->removePropertyListener(inAddress, inListener, inClientData);
 }
 
@@ -153,7 +153,7 @@ OSStatus AudioHardwareCreateAggregateDevice(CFDictionaryRef, AudioObjectID* outD
 	STUB();
 	if (outDeviceID)
 		*outDeviceID = 0;
-	
+
 	return unimpErr;
 }
 
@@ -229,7 +229,7 @@ OSStatus AudioDeviceCreateIOProcID(AudioObjectID inDevice,
 	AudioHardwareImpl* obj = GetObject(inDevice);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->createIOProcID(inProc, inClientData, outIOProcID);
 }
 
@@ -247,7 +247,7 @@ OSStatus AudioDeviceDestroyIOProcID(AudioObjectID inDevice,
 	AudioHardwareImpl* obj = GetObject(inDevice);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->destroyIOProcID(inIOProcID);
 }
 
@@ -256,7 +256,7 @@ OSStatus AudioDeviceRemoveIOProc(AudioDeviceID inDevice, AudioDeviceIOProc inPro
 	AudioHardwareImpl* obj = GetObject(inDevice);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->destroyIOProcID(AudioDeviceIOProcID(inProc));
 }
 
@@ -265,7 +265,7 @@ OSStatus AudioDeviceStart(AudioObjectID inDevice, AudioDeviceIOProcID inProcID)
 	AudioHardwareImpl* obj = GetObject(inDevice);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->start(inProcID, nullptr, 0);
 }
 
@@ -275,7 +275,7 @@ OSStatus AudioDeviceStartAtTime(AudioObjectID inDevice, AudioDeviceIOProcID inPr
 	AudioHardwareImpl* obj = GetObject(inDevice);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->start(inProcID, ioRequestedStartTime, inFlags);
 }
 
@@ -284,7 +284,7 @@ OSStatus AudioDeviceStop(AudioObjectID inDevice, AudioDeviceIOProcID inProcID)
 	AudioHardwareImpl* obj = GetObject(inDevice);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->stop(inProcID);
 }
 
@@ -293,7 +293,7 @@ OSStatus AudioDeviceGetCurrentTime(AudioObjectID inDevice, AudioTimeStamp* outTi
 	AudioHardwareImpl* obj = GetObject(inDevice);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->getCurrentTime(outTime);
 }
 
@@ -303,7 +303,7 @@ OSStatus AudioDeviceTranslateTime(AudioObjectID inDevice, const AudioTimeStamp* 
 	AudioHardwareImpl* obj = GetObject(inDevice);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->translateTime(inTime, outTime);
 }
 
@@ -313,7 +313,7 @@ OSStatus AudioDeviceGetNearestStartTime(AudioObjectID inDevice,
 	AudioHardwareImpl* obj = GetObject(inDevice);
 	if (!obj)
 		return kAudioHardwareBadObjectError;
-	
+
 	return obj->getNearestStartTime(ioRequestedStartTime, inFlags);
 }
 
@@ -345,4 +345,3 @@ OSStatus AudioObjectRemovePropertyListenerBlock(AudioObjectID inObjectID,
 }
 
 #endif
-

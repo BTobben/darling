@@ -7,4 +7,3 @@
 
 __attribute__((visibility("default"), used))
 NSString * const AVVideoCodecTypeJPEG = @"AVVideoCodecTypeJPEG";
-

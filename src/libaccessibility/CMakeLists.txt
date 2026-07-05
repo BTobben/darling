@@ -16,4 +16,3 @@ target_link_libraries(Accessibility system objc Foundation)
 install(TARGETS Accessibility DESTINATION libexec/darling/usr/lib)
 
 target_sources(Accessibility PRIVATE AXCodexCompatibility.m)
-

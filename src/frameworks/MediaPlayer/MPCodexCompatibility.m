@@ -36,4 +36,3 @@ MP_COMPAT_EXPORT NSString * const MPNowPlayingInfoPropertyPlaybackRate = @"MPNow
 
 @implementation MPRemoteCommandCenter
 @end
-
