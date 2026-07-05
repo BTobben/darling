@@ -25,6 +25,7 @@ add_framework(DiskArbitration
 	VERSION ${FRAMEWORK_VERSION}
 
 	SOURCES
+        DACodexCompatibility.c
 		${da_SRCS}
 
 	DEPENDENCIES

@@ -18,6 +18,7 @@ add_framework(AVFAudio
 	VERSION ${FRAMEWORK_VERSION}
 
 	SOURCES
+        AVFAudioCodexSpeechCompatibility.m
 		src/AVFAudio.m
         src/AVAudioIONode.m
         src/AVAudioOutputNode.m

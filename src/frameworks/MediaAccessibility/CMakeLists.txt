@@ -18,6 +18,7 @@ add_framework(MediaAccessibility
     VERSION ${FRAMEWORK_VERSION}
 
     SOURCES
+        MACodexCompatibility.c
         src/MediaAccessibility.c
 
     DEPENDENCIES

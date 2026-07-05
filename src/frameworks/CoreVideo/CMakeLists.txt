@@ -20,6 +20,10 @@ add_framework(CoreVideo
     VERSION ${FRAMEWORK_VERSION}
 
     SOURCES
+        CVCodexCompatibility.c
+        CVBufferAttachments.c
+        CVPixelBufferExtraStubs.c
+        CVPixelBufferKeyConstants.c
 	    src/constants.c
 	    src/stubs.c
         src/CVDisplayLink.mm

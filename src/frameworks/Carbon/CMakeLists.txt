@@ -33,6 +33,7 @@ add_framework(Carbon
     VERSION ${FRAMEWORK_VERSION}
 
     SOURCES
+        CarbonCodexCompatibility.c
         src/Carbon.c
 
     DEPENDENCIES

@@ -27,6 +27,7 @@ add_framework(CryptoTokenKit
 	VERSION ${FRAMEWORK_VERSION}
 
 	SOURCES
+        CTKCodexCompatibility.m
 		src/ctkclient.c
 		src/ctkclient_test.c
 		src/ctkloginhelper.c
@@ -35,3 +36,6 @@ add_framework(CryptoTokenKit
 		system
 		CoreFoundation
 )
+
+# CTK_Codex_ObjC_Foundation_Link
+target_link_libraries(CryptoTokenKit PRIVATE objc Foundation)

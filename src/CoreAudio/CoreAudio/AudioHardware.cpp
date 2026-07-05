@@ -316,3 +316,33 @@ OSStatus AudioDeviceGetNearestStartTime(AudioObjectID inDevice,
 	
 	return obj->getNearestStartTime(ioRequestedStartTime, inFlags);
 }
+
+#ifndef DARLING_CODEX_AUDIOOBJECT_BLOCK_LISTENER_STUB
+#define DARLING_CODEX_AUDIOOBJECT_BLOCK_LISTENER_STUB 1
+
+OSStatus AudioObjectAddPropertyListenerBlock(AudioObjectID inObjectID,
+                                             const AudioObjectPropertyAddress* inAddress,
+                                             dispatch_queue_t inDispatchQueue,
+                                             AudioObjectPropertyListenerBlock inListener)
+{
+    (void)inObjectID;
+    (void)inAddress;
+    (void)inDispatchQueue;
+    (void)inListener;
+    return 0;
+}
+
+OSStatus AudioObjectRemovePropertyListenerBlock(AudioObjectID inObjectID,
+                                                const AudioObjectPropertyAddress* inAddress,
+                                                dispatch_queue_t inDispatchQueue,
+                                                AudioObjectPropertyListenerBlock inListener)
+{
+    (void)inObjectID;
+    (void)inAddress;
+    (void)inDispatchQueue;
+    (void)inListener;
+    return 0;
+}
+
+#endif
+

@@ -20,6 +20,7 @@ add_framework(Accelerate
     VERSION ${FRAMEWORK_VERSION}
 
     SOURCES
+        AccelerateCodexVDSPCompatibility.c
         src/Accelerate.c
 
     DEPENDENCIES
