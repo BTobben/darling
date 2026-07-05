@@ -21,6 +21,7 @@ add_framework(QuickLookUI
         src/QLPreviewPanel.m
 
     DEPENDENCIES
+        system
         objc
         Foundation
 )

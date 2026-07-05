@@ -1,4 +1,4 @@
-#import <QuickLookUI/QLPreviewPanel.h>
+#import "../include/QuickLookUI/QLPreviewPanel.h"
 
 /*
  * Minimal QuickLookUI compatibility shim.
