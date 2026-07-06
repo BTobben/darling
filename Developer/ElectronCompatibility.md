@@ -83,16 +83,13 @@ dyld: Symbol not found: _OBJC_CLASS_$_NSConstantIntegerNumber
   Expected in: Foundation.framework/Versions/C/Foundation
 ```
 
-`NSConstantIntegerNumber` appears to belong in Foundation. In this repository,
-Foundation is provided by the `src/external/foundation` submodule, so the first
-follow-up should avoid changing submodule SHAs unless the submodule contents are
-intentionally editable in the selected checkout.
+`NSConstantIntegerNumber` belongs in Foundation. This branch routes the
+`src/external/foundation` submodule to the `BTobben/darling-foundation` fork and
+pins it to the `codex/implement-nsconstantintegernumber-compatibility-class`
+branch commit that adds a minimal private `NSConstantIntegerNumber : NSNumber`
+compatibility class in Foundation's `src/NSNumber.m`.
 
-Likely follow-up target after inspection of an initialized Foundation submodule:
-
-- file: `src/external/foundation/src/NSNumber.m` or the local equivalent
-- class: `NSConstantIntegerNumber : NSNumber`
-- behavior: minimal NSNumber-compatible integer subclass sufficient for constant
-  integer NSNumber instances used by ReactiveObjC/Electron startup
-- validation: rebuild/reinstall Foundation and rerun the Electron run-as-node
-  smoke harness
+Cloud validation cannot claim Electron runtime success. Local validation still
+must rebuild/reinstall Foundation, verify that the Foundation binary exports
+`_OBJC_CLASS_$_NSConstantIntegerNumber`, and rerun the Electron run-as-node
+smoke harness.

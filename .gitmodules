@@ -24,7 +24,8 @@
 	url = ../darling-compiler-rt.git
 [submodule "src/external/foundation"]
 	path = src/external/foundation
-	url = ../darling-foundation.git
+	url = https://github.com/BTobben/darling-foundation.git
+	branch = codex/implement-nsconstantintegernumber-compatibility-class
 [submodule "src/external/corefoundation"]
 	path = src/external/corefoundation
 	url = ../darling-corefoundation.git
