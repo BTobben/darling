@@ -39,6 +39,11 @@ add_framework(CoreServices
 	VERSION ${FRAMEWORK_VERSION}
 
 	SOURCES
+        CSCodexRemainingCompatibility.c
+        CSLaunchServicesCodexCompatibility.c
+        CSFSEventsCodexCompatibility.c
+        CSAppleEventsCodexCompatibility.c
+        CSCodexCompatibility.c
 		constants.m
 
 	DEPENDENCIES

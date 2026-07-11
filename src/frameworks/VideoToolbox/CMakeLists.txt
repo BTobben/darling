@@ -18,6 +18,7 @@ add_framework(VideoToolbox
     VERSION ${FRAMEWORK_VERSION}
 
     SOURCES
+        VTCodexCompatibility.c
         src/VideoToolbox.m
         src/VTCompressionProperties.c
         src/FigMetalTransferHelper.m

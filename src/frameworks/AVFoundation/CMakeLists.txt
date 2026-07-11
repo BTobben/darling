@@ -18,6 +18,10 @@ add_framework(AVFoundation
     VERSION ${FRAMEWORK_VERSION}
 
     SOURCES
+        AVCaptureDeviceTypes.m
+        AVVideoCodecTypes.m
+        AVCaptureDeviceDiscoverySession.m
+        AVCaptureMissingClasses.m
         src/AVFoundation.m
         src/AVPlayerLayerIntermediateLayer.m
         src/AVPlayerLayerInternal.m

@@ -18,6 +18,7 @@ add_framework(CoreMedia
     VERSION ${FRAMEWORK_VERSION}
 
     SOURCES
+        CMCodexCompatibility.c
         src/CoreMedia.c
         src/CMTime.c
         src/CMSampleBuffer.c
