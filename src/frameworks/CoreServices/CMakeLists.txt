@@ -58,6 +58,7 @@ add_framework(CoreServices
 		OSServices
 		system
 		CoreFoundation
+		Foundation
 		${EXTRA_LIBS}
 
 	RESOURCES
@@ -88,8 +89,17 @@ reexport(CoreServices SearchKit ${SearchKit_BUILD})
 reexport(CoreServices SharedFileList ${SharedFileList_BUILD})
 reexport(CoreServices OSServices ${OSServices_BUILD})
 
+set(_CoreServices_reexport_link_flags "")
+if (TARGET_x86_64)
+	string(APPEND _CoreServices_reexport_link_flags
+		" -Xarch_x86_64 -Wl,-reexported_symbols_list,${CMAKE_CURRENT_SOURCE_DIR}/reexport-x86_64.exp")
+endif (TARGET_x86_64)
+if (TARGET_i386)
+	string(APPEND _CoreServices_reexport_link_flags
+		" -Xarch_i386 -Wl,-reexported_symbols_list,${CMAKE_CURRENT_SOURCE_DIR}/reexport-i386.exp")
+endif (TARGET_i386)
 set_property(TARGET CoreServices APPEND_STRING PROPERTY
-  LINK_FLAGS " -Wl,-reexported_symbols_list,${CMAKE_CURRENT_SOURCE_DIR}/reexport.exp")
+	LINK_FLAGS " ${_CoreServices_reexport_link_flags}")
 
 install(FILES SystemVersion.plist DESTINATION "libexec/darling/System/Library/CoreServices")
 install(FILES SystemVersionCompat.plist DESTINATION "libexec/darling/System/Library/CoreServices")

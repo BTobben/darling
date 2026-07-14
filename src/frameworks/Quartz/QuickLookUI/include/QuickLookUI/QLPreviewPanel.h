@@ -17,7 +17,16 @@
  along with Darling.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef QLPREVIEWPANEL_H
+#define QLPREVIEWPANEL_H
+
 #import <AppKit/AppKit.h>
 
 @interface QLPreviewPanel : NSPanel
++ (instancetype)sharedPreviewPanel;
++ (BOOL)sharedPreviewPanelExists;
+- (void)reloadData;
+- (void)refreshCurrentPreviewItem;
 @end
+
+#endif /* QLPREVIEWPANEL_H */

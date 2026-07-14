@@ -1,13 +1,13 @@
 #ifndef QLPREVIEWPANEL_H
 #define QLPREVIEWPANEL_H
 
-#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 /*
- * Compatibility shim for applications that weakly or incidentally link
- * QuickLookUI. Darling does not implement real QuickLook preview UI here.
+ * Public QuickLookUI declaration for the Quartz-owned QLPreviewPanel class.
+ * QuickLookUI re-exports the class symbols; Quartz provides the implementation.
  */
-@interface QLPreviewPanel : NSObject
+@interface QLPreviewPanel : NSPanel
 + (instancetype)sharedPreviewPanel;
 + (BOOL)sharedPreviewPanelExists;
 - (void)reloadData;
