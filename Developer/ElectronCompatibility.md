@@ -74,12 +74,14 @@ Darling's concrete `QLPreviewPanel` implementation is owned by Quartz. The
 QuickLookUI framework in this branch preserves the expected framework and public
 header surface, declares `QLPreviewPanel` as the same `NSPanel` subclass exposed
 by Quartz, links Quartz normally, and narrowly re-exports the Quartz-owned
-Objective-C `QLPreviewPanel` class symbols. Quartz also provides minimal safe
-compatibility methods: `+sharedPreviewPanelExists` returns `NO`,
-`+sharedPreviewPanel` returns `nil`, and panel refresh selectors are no-ops.
-QuickLookUI must not define another concrete `QLPreviewPanel` class, because
-loading Quartz and QuickLookUI together would otherwise register the same
-Objective-C class twice.
+Objective-C `QLPreviewPanel` class symbols. Because Quartz itself loads and
+re-exports QuickLook, the QuickLookUI link also declares QuickLook as an explicit
+build dependency and maps QuickLook's absolute install name to the build-tree
+QuickLook artifact. Quartz also provides minimal safe compatibility methods:
+`+sharedPreviewPanelExists` returns `NO`, `+sharedPreviewPanel` returns `nil`,
+and panel refresh selectors are no-ops. QuickLookUI must not define another
+concrete `QLPreviewPanel` class, because loading Quartz and QuickLookUI together
+would otherwise register the same Objective-C class twice.
 
 Local Electron v43 validation has progressed past the known strong loader
 symbol blockers, including the CoreServices `NSUserActivity` two-level import.

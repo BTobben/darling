@@ -25,8 +25,12 @@ add_framework(QuickLookUI
         objc
         Foundation
         Quartz
+        QuickLook
 )
 
+set(QuickLook_BUILD ${CMAKE_BINARY_DIR}/src/frameworks/QuickLook/QuickLook)
+set(_QuickLookUI_link_flags
+    " -Wl,-dylib_file,/System/Library/Frameworks/QuickLook.framework/Versions/A/QuickLook:${QuickLook_BUILD}")
 set(_QuickLookUI_reexport_link_flags "")
 if (TARGET_x86_64)
     string(APPEND _QuickLookUI_reexport_link_flags
@@ -37,4 +41,4 @@ if (TARGET_i386)
         " -Xarch_i386 -Wl,-reexported_symbols_list,${CMAKE_CURRENT_SOURCE_DIR}/reexport-i386.exp")
 endif (TARGET_i386)
 set_property(TARGET QuickLookUI APPEND_STRING PROPERTY
-    LINK_FLAGS " ${_QuickLookUI_reexport_link_flags}")
+    LINK_FLAGS " ${_QuickLookUI_link_flags} ${_QuickLookUI_reexport_link_flags}")
