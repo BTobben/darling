@@ -20,4 +20,23 @@
 #import <QuickLookUI/QLPreviewPanel.h>
 
 @implementation QLPreviewPanel
+
++ (instancetype)sharedPreviewPanel
+{
+	return nil;
+}
+
++ (BOOL)sharedPreviewPanelExists
+{
+	return NO;
+}
+
+- (void)reloadData
+{
+}
+
+- (void)refreshCurrentPreviewItem
+{
+}
+
 @end
