@@ -70,26 +70,28 @@ Darling lacked:
 - `/System/Library/Frameworks/QuickLookUI.framework/Versions/A/QuickLookUI`
 - Objective-C class symbol `_OBJC_CLASS_$_QLPreviewPanel`
 
-The QuickLookUI framework in this branch is only a compatibility shim. It
-exports `QLPreviewPanel` and no-ops common panel refresh methods; it does not
-implement real QuickLook preview UI.
+Darling's concrete `QLPreviewPanel` implementation is owned by Quartz. The
+QuickLookUI framework in this branch preserves the expected framework and public
+header surface, links Quartz normally, and narrowly re-exports the Quartz-owned
+Objective-C `QLPreviewPanel` class symbols. QuickLookUI must not define another
+concrete `QLPreviewPanel` class, because loading Quartz and QuickLookUI together
+would otherwise register the same Objective-C class twice.
 
-After a local QuickLookUI shim was installed into the Darling prefix, Electron
-advanced to the next observed blocker:
+Local Electron v43 validation has progressed past the known strong loader
+symbol blockers, including the CoreServices `NSUserActivity` two-level import.
+The current local run-as-node result exits immediately before JavaScript entry
+with status 1:
 
 ```text
-dyld: Symbol not found: _OBJC_CLASS_$_NSConstantIntegerNumber
-  Referenced from: ReactiveObjC.framework/ReactiveObjC
-  Expected in: Foundation.framework/Versions/C/Foundation
+PROBE_STATUS=1
+ELAPSED_SECONDS=0
+JS_ENTRY_COUNT=0
 ```
 
-`NSConstantIntegerNumber` belongs in Foundation. This branch routes the
-`src/external/foundation` submodule to the `BTobben/darling-foundation` fork and
-pins it to the `codex/implement-nsconstantintegernumber-compatibility-class`
-branch commit that adds a minimal private `NSConstantIntegerNumber : NSNumber`
-compatibility class in Foundation's `src/NSNumber.m`.
-
-Cloud validation cannot claim Electron runtime success. Local validation still
-must rebuild/reinstall Foundation, verify that the Foundation binary exports
-`_OBJC_CLASS_$_NSConstantIntegerNumber`, and rerun the Electron run-as-node
-smoke harness.
+There is no remaining observed symbol-not-found dyld abort, Objective-C
+unrecognized-selector exception, segmentation fault, or signal termination in
+that local run. Cloud validation cannot claim Electron or Codex.app runtime
+success. Local validation still must rebuild and reinstall the affected
+frameworks, inspect the resulting Mach-O exports for both slices, confirm the
+QuickLookUI/Quartz duplicate-class warning is gone, and rerun the Electron
+run-as-node smoke harness.

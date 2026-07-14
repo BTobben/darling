@@ -18,10 +18,23 @@ add_framework(QuickLookUI
     VERSION ${FRAMEWORK_VERSION}
 
     SOURCES
-        src/QLPreviewPanel.m
+        src/QuickLookUICompatibility.c
 
     DEPENDENCIES
         system
         objc
         Foundation
+        Quartz
 )
+
+set(_QuickLookUI_reexport_link_flags "")
+if (TARGET_x86_64)
+    string(APPEND _QuickLookUI_reexport_link_flags
+        " -Xarch_x86_64 -Wl,-reexported_symbols_list,${CMAKE_CURRENT_SOURCE_DIR}/reexport-x86_64.exp")
+endif (TARGET_x86_64)
+if (TARGET_i386)
+    string(APPEND _QuickLookUI_reexport_link_flags
+        " -Xarch_i386 -Wl,-reexported_symbols_list,${CMAKE_CURRENT_SOURCE_DIR}/reexport-i386.exp")
+endif (TARGET_i386)
+set_property(TARGET QuickLookUI APPEND_STRING PROPERTY
+    LINK_FLAGS " ${_QuickLookUI_reexport_link_flags}")
